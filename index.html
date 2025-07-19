@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Text Encryptor</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Encrypt Text with Private Key</h1>
+
+  <textarea id="plaintext" placeholder="Enter your text here..."></textarea>
+  <input type="password" id="key" placeholder="Enter private key">
+
+  <div class="buttons">
+    <button onclick="encryptText()">Encrypt</button>
+    <button onclick="decryptText()">Decrypt</button>
+  </div>
+
+  <textarea id="result" placeholder="Result appears here..."></textarea>
+
+  <script src="script.js"></script>
+</body>
+</html>
