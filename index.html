@@ -4,8 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Private Key Text Encryption</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="container">
@@ -18,12 +17,13 @@
     <label for="privateKey">
       Private Key (not a blockchain key – a passphrase to lock/unlock your message):
     </label>
-    <input type="password" id="privateKey" placeholder="Enter private key (min 8 chars)" />
+    <input type="text" id="privateKey" placeholder="Enter private key (min 8 chars)" />
 
     <div class="button-group">
       <button onclick="encryptText()">Encrypt</button>
       <button onclick="decryptText()">Decrypt</button>
       <button onclick="generatePrivateKey()">Generate Key</button>
+      <button onclick="copyPrivateKey()">Copy Key</button>
     </div>
 
     <label for="output">Output:</label>
