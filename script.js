@@ -15,7 +15,7 @@ function base64ToBuffer(base64) {
 // Derive AES key from password using PBKDF2
 async function deriveKeyFromPassword(password) {
   const enc = new TextEncoder();
-  const salt = enc.encode('fixed-salt'); // Fixed salt for simplicity
+  const salt = enc.encode('fixed-salt');
   const baseKey = await crypto.subtle.importKey(
     'raw',
     enc.encode(password),
@@ -50,7 +50,7 @@ async function encryptText() {
 
   try {
     const key = await deriveKeyFromPassword(password);
-    const iv = crypto.getRandomValues(new Uint8Array(16)); // 16-byte counter for CTR
+    const iv = crypto.getRandomValues(new Uint8Array(16));
     const encoded = new TextEncoder().encode(text);
     const encrypted = await crypto.subtle.encrypt(
       { name: 'AES-CTR', counter: iv, length: 128 },
@@ -80,7 +80,7 @@ async function decryptText() {
   try {
     const key = await deriveKeyFromPassword(password);
     const combined = base64ToBuffer(encryptedText);
-    const iv = combined.slice(0, 16); // 16-byte counter
+    const iv = combined.slice(0, 16);
     const ciphertext = combined.slice(16);
     const decrypted = await crypto.subtle.decrypt(
       { name: 'AES-CTR', counter: iv, length: 128 },
@@ -101,4 +101,13 @@ function generatePrivateKey() {
     .join('');
   document.getElementById('privateKey').value = hex;
   alert('Generated key copied to input field. Store it securely!');
+}
+
+// Copy private key to clipboard
+function copyPrivateKey() {
+  const privateKey = document.getElementById('privateKey').value.trim();
+  if (!privateKey) return alert('No private key to copy.');
+  navigator.clipboard.writeText(privateKey)
+    .then(() => alert('Private key copied to clipboard!'))
+    .catch(err => alert('Failed to copy: ' + err.message));
 }
