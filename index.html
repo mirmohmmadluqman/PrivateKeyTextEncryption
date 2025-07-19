@@ -1,22 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Text Encryptor</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Private Key Text Encryption</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0d0d0d;
+      color: #f0f0f0;
+      padding: 2rem;
+    }
+    .container {
+      max-width: 700px;
+      margin: auto;
+      padding: 2rem;
+      background: #1a1a1a;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    }
+    textarea, input[type="password"] {
+      width: 100%;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+      background: #262626;
+      color: #fff;
+    }
+    button {
+      padding: 0.75rem 1.5rem;
+      margin-right: 1rem;
+      background-color: #0e76a8;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    footer {
+      text-align: center;
+      margin-top: 3rem;
+      font-size: 0.9rem;
+      color: #999;
+    }
+  </style>
 </head>
 <body>
-  <h1>Encrypt Text with Private Key</h1>
+  <div class="container">
+    <h1>🔐 Encrypted Text Locker</h1>
+    <p>This tool allows you to encrypt/decrypt messages using a private key. Keep your info public but locked with cryptographic secrecy.</p>
 
-  <textarea id="plaintext" placeholder="Enter your text here..."></textarea>
-  <input type="password" id="key" placeholder="Enter private key">
+    <textarea id="textInput" placeholder="Enter message or encrypted text..."></textarea>
+    <input type="password" id="privateKey" placeholder="Enter private key... (min 8 characters)" />
+    <div>
+      <button onclick="encryptText()">Encrypt</button>
+      <button onclick="decryptText()">Decrypt</button>
+      <button onclick="generatePrivateKey()">Generate Private Key</button>
+    </div>
 
-  <div class="buttons">
-    <button onclick="encryptText()">Encrypt</button>
-    <button onclick="decryptText()">Decrypt</button>
+    <h3>Output:</h3>
+    <textarea id="output" readonly></textarea>
   </div>
 
-  <textarea id="result" placeholder="Result appears here..."></textarea>
+  <footer>
+    <p>Made by Mir Mohmmad Luqman | Email: <a href="mailto:mirmohmmadluqman@gmail.com">mirmohmmadluqman@gmail.com</a> | Twitter/X: <a href="https://x.com/mirmohmadluqman">@mirmohmadluqman</a> | Discord: @mirmohmmadluqman</p>
+  </footer>
 
   <script src="script.js"></script>
 </body>
